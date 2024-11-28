@@ -18,9 +18,9 @@ import lombok.ToString;
  * field에 final 키워드를 추가한 뒤 @RequiredArgsConstructor 를 사용한다.
  * 
  */
-@RequiredArgsConstructor
-
 @Component
+
+@RequiredArgsConstructor // Person(Address, Contact) + @NonNull
 
 //@AllArgsConstructor // Person(Address, Contact)
 

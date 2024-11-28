@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor // Calculator()
-@AllArgsConstructor // Calculator(Adder, Subtractor, Multiplier, Divider)
+@AllArgsConstructor // Calculator(String, Adder, Subtractor, Multiplier, Divider)
 @Getter
 @Setter
 

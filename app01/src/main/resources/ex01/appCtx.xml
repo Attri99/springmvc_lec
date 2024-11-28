@@ -3,10 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
  
- <!-- 
-    Calculator calculator = new Calculator("CASIO", Adder, Subtractor, Multiplier, Divider);
-     
-  --> 
+ 
   <bean id="adder" class="com.min.app01.ex01.Adder"/>
   <bean id="subtractor" class="com.min.app01.ex01.Subtractor"/>
   <bean id="multiplier" class="com.min.app01.ex01.Multiplier" />

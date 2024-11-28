@@ -1,0 +1,10 @@
+---------------
+
+Spring MVC Project
+
+Model
+View
+Controller
+
+Client(HTML) -> Controller -> Model -> DB
+View

@@ -8,6 +8,7 @@ public class Main {
   public static void main(String[] args) {
     
     //GenericXMLApplicationContext
+    
     AbstractApplicationContext ctx = new GenericXmlApplicationContext("ex01/appCtx.xml");
     
     Calculator calculator1 = ctx.getBean("calc1", Calculator.class);
@@ -17,6 +18,8 @@ public class Main {
     System.out.println(calculator1.getModule3().multiply(1,2,3,4,5));
     System.out.println(calculator1.getModule4().divide(5, 2));
    
+    System.out.println();
+    
     Calculator calculator2 = ctx.getBean("calc2", Calculator.class);
     System.out.println(calculator2.getBrand());
     System.out.println(calculator2.getModule1().add(1,2,3,4,5));

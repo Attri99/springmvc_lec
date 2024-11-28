@@ -7,6 +7,7 @@ public class Main {
 
   public static void main(String[] args) {
     
+    //AnnotationConfigApplicationContext
     
     AbstractApplicationContext ctx = new AnnotationConfigApplicationContext("com.min.app01.ex03");
     

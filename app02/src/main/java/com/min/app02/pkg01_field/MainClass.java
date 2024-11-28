@@ -12,7 +12,7 @@ public class MainClass {
     AbstractApplicationContext ctx = new AnnotationConfigApplicationContext("com.min.app02.pkg01_field", "com.min.app02.domain"); // AnnotationConfigApplicationContext("com.min.app02");
     
     Person person = ctx.getBean("person", Person.class);
-    
+    System.out.println(person);
     
     Address address = ctx.getBean(Address.class);
     System.out.println(address);
