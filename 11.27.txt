@@ -1,0 +1,25 @@
+tomcat.apache.org 에서 Tomcat 10 zip파일로 다운받기 -> tools에 저장하고 압축도 풀기
+-> 시스템 설정의 환경변수에서 CATALINA_HOME 새로 만들어서 apache 등록하기
+spring.io 에서 sts3 다운로드 -> lombok에서 sts3 등록하기
+
+java jdk 11 다운로드 -> 시스템 설정 환경 변수에서 JAVA_HOME의 17을 11로 바꿔준다.
+
+window -> preference > General
+
+build : 프로젝트를 서버에 배포할 수 있는 파일(배포 파일 : war, jar 등)로 만드는 과정
+- Maven : XML 기반 (pom.xml) 필요한 jar 파일을 알아서 다운로드 받아서 넣어준다.
+- Gradle : Properties 기반
+
+.gitignore 작업하기
+Windows Eclipse Java Maven
+
+egov -전자정부 표준프레임워크 
+4.0.0 사용
+
+과거의 제어권 : 개발자
+현재의 제어권 : 프레임워크
+
+인스턴스(객체)-Bean
+
+mvnrepository 사이트에서 project lombok 검색
+dependency 태그 내부에는 주석 달지 않기
