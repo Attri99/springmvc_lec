@@ -21,12 +21,11 @@ public class Person {
   
   //field
   
-  @Autowired
+  @Autowired // Spring Container에서 타입이 Address인 bean을 가져옵니다.
   private Address address;
   
   
-  
-  @Autowired
+  @Autowired // Spring Container에서 타입이 Contact인 bean을 가져옵니다.
   private Contact contact;
   
   
