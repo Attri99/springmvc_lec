@@ -13,7 +13,7 @@ public class MvcController1 {
    * 반환타입
    *   1) String        : 사용자에게 보여 줄 (응답할) JSP 의 경로와 이름을 작성한다.
    *   2) void          : 요청한 주소를 JSP 경로와 이름으로 인식한다.
-   *   3) ModelAndView  : 
+   *   3) ModelAndView  : 사용자에게 보여 줄 JSP의 경로와 이름은 setViewName() 메소드로 저장하고, 전달할 값은 addObject() 메소드로 저장한다.
    *   4) ...
    *   
    * 메소드명
