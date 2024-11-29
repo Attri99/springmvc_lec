@@ -28,7 +28,8 @@
       <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
       ${contextPath}
    --%>
-  <!-- 요청 만들기 1 : <a> 태그 -->
+   
+  <%-- 요청 만들기 1 : <a> 태그 (<a> 태그는 항상 GET 방식으로 요청한다. --%>
   <div>
     <a href="<%=request.getContextPath()%>/webdir3/req1">요청1</a>
     <br/>
@@ -37,6 +38,10 @@
     <a href="<%=request.getContextPath()%>/webdir3/req3?flowers=ROSE&flowers=TULIP">요청3</a>
     <br/>
     <a href="<%=request.getContextPath()%>/webdir3/req4">요청4</a>
+    <br/>
+    <a href = "<%=request.getContextPath()%>/webdir3/req5?sort=ASC">요청5</a>
+    <br/>
+    <a href ="<%=request.getContextPath()%>/webdir3/req6?sort=ASC&page=1">요청6</a>
   </div>
   
 </body>
