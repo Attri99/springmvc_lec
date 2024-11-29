@@ -34,8 +34,10 @@ public class MvcController1 {
     * 1. 요청 주소와 요청 메소드를 작성하는 Annotation
     * 2. 요청 주소
     *   1) value="/"  : Context Path 요청을 의미한다. (대표주소로 들어가면 저 주소를 보여주자) http://127.0.0.1:8080/app03
-    *   2) value="/list" : /list 요청을 의미한다. http://127.0.0.1:8080/app03  
-    *   3) value={"/list", "/list.do"} : 2개 이상의 요청을 의미한다.  http:// 127.0.0.1:8080/app03
+    *   2) value="/list" : /list 요청을 의미한다. http://127.0.0.1:8080/app03/list  
+    *   3) value={"/list", "/list.do"} : 2개 이상의 요청을 의미한다.  
+    *       http:// 127.0.0.1:8080/app03/list 
+    *       http:// 127.0.0.1:8080/app03/list.do
     *   
     *   
     * 3. 요청 메소드
@@ -44,20 +46,21 @@ public class MvcController1 {
     *  
     */
 
-  @RequestMapping(value="/", method=RequestMethod.GET)
+  /*
+   * return "webdir1/index"; 해석해보기
+   * 
+   * 1. 리턴 값 "index" 는 ViewResolver 에게 전달됩니다.
+   *    (DispatcherServlet : servlet-context.xml 에 ViewResolver가 정의되어 있다.)
+   * 2. ViewResolver는 "index" 앞에 "/WEB-INF/views/" 문자열을 추가합니다. (prefix)
+   * 3. ViewResolver는 "index" 뒤에 ".jsp" 문자열을 추가합니다. (suffix)
+   * 4. ViewResolver는 완성된 최종 view로 이동합니다.
+   *    (최종 View의 모습 : "/WEB-INF/views/webdir1/index")
+   * 
+   */
+  
+  @RequestMapping(value="/", method = RequestMethod.GET)
   public String welcome() {
     return "webdir1/index"; // return "/webdir1/index/"로 작성해도 스프링이 올바르게 해석해 준다.
-    /*
-     * return "webdir1/index"; 해석해보기
-     * 
-     * 1. 리턴 값 "index" 는 ViewResolver 에게 전달됩니다.
-     *    (DispatcherServlet : servlet-context.xml 에 ViewResolver가 정의되어 있다.)
-     * 2. ViewResolver는 "index" 앞에 "/WEB-INF/views/" 문자열을 추가합니다. (prefix)
-     * 3. ViewResolver는 "index" 뒤에 ".jsp" 문자열을 추가합니다. (suffix)
-     * 4. ViewResolver는 완성된 최종 view로 이동합니다.
-     *    (최종 View의 모습 : "/WEB-INF/views/webdir1/index")
-     * 
-     */
   }
   
   

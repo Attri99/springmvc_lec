@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MvcController2 {
   
+  // 요청 주소가 "/standard/update"인 경우에 동작한다.
   @RequestMapping(value = "/update")
   public String method1() {
     return "webdir2/update";

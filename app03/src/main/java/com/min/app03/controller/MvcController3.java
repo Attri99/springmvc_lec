@@ -43,8 +43,13 @@ public class MvcController3 {
   // Query String : sort=ASC&page=1
   @RequestMapping(value="/webdir3/req2")
   public String req2(HttpServletRequest request) {
+    
+    // Parameter가 전달되면 getParameter() 메소드로 받는다.
     String sort = request.getParameter("sort");
+    
+    // Parameter는 언제나 String 타입으로 받는다. 다른 타입으로 바꿔야 할 경우에는 추가 작업을 해야 한다.
     int page = Integer.parseInt(request.getParameter("page"));
+    
     System.out.println(sort + ", " + page);
     return "webdir3/req2";
     }
@@ -73,6 +78,7 @@ public class MvcController3 {
     // Optional 에 담은 Parameter page를 꺼낸다. 이때 Parameter page가 없으면 "1"을 꺼낸다.
     int page = Integer.parseInt(opt.orElse("1"));
     
+    // orElse가 좀 어려운듯
     System.out.println(sort + ", " + page);
     
     return "webdir3/req4";
