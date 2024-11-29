@@ -17,8 +17,9 @@
     <org.springframework-version>5.3.6</org.springframework-version>
     <org.slf4j-version>2.0.13</org.slf4j-version>
     <org.junit-version>5.10.2</org.junit-version>
-    <jakarta.servlet-api-version>5.0.0</jakarta.servlet-api-version>
+    <jakarta.servlet-api-version>4.0.1</jakarta.servlet-api-version>
   </properties>
+  
   <dependencies>
   
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -42,6 +43,7 @@
         </exclusion>
       </exclusions>
     </dependency>
+    
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -54,12 +56,14 @@
       <artifactId>slf4j-api</artifactId>
       <version>${org.slf4j-version}</version>
     </dependency>
+    
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
       <version>${org.slf4j-version}</version>
       <scope>runtime</scope>
     </dependency>
+    
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
@@ -67,24 +71,42 @@
       <scope>runtime</scope>
     </dependency>
 
+    <!--
+      Tomcat 9.0 과 함께 사용해야 하는 버전 정리
+      
+      1. Servlet 4.0.1
+      2. JSP 2.3.3
+      3. JSTL 1.2.5
+    -->
+
     <!-- Servlet -->
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <version>${jakarta.servlet-api-version}</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JSP -->
+    <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
       <scope>provided</scope>
     </dependency>
 
     <!-- JSTL -->
     <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>3.0.0</version>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-spec</artifactId>
+      <version>1.2.5</version>
     </dependency>
-    <dependency> <!-- JSTL Implementation -->
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-      <version>3.0.1</version>
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+      <version>1.2.5</version>
     </dependency>
 
     <!-- Test -->
@@ -94,7 +116,9 @@
       <version>${org.junit-version}</version>
       <scope>test</scope>
     </dependency>
+    
   </dependencies>
+  
   <build>
     <plugins>
       <plugin>
@@ -107,19 +131,7 @@
           <showDeprecation>true</showDeprecation>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-maven-plugin</artifactId>
-        <version>11.0.21</version>
-        <configuration>
-          <webApp>
-            <contextPath>/springmvc</contextPath>
-          </webApp>
-          <httpConnector>
-            <port>8585</port>
-          </httpConnector>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
+  
 </project>
