@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MvcController6 {
   
-  @RequestMapping(value="/webdir6/req06")
+  @RequestMapping(value="/webdir6/main")
   public void main() {
     
   }

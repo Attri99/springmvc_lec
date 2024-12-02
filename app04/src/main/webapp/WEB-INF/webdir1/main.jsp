@@ -8,5 +8,9 @@
 </head>
 <body>
   
+  <%-- Forward 확인 링크 --%>
+  <a href="<%=request.getContextPath()%>/forward/link.do?id=1">링크</a>
+  
+  
 </body>
 </html>
