@@ -1,0 +1,23 @@
+html5 templates
+
+<%@ page language="java" contentType="text/html; charset=${encoding}" pageEncoding="${encoding}"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="${encoding}">
+<meta name ="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+</head>
+<body>
+${cursor}
+</body>
+</html>
+
+- views 폴더까지는 경로 설정을 해주지 않아도 됨, appServlet의 viewresolver가 잡아주기 때문
+
+- run on server 할때 remove all 눌러서 실행하고자 하는 프로젝트 하나만 하기
+- front 측에서 태그를 인식할때 id를 쓰고, 백단에서는 name을 쓴다.
+- 한글이 깨지지 않도록 
+   1) OutputStream 과 Writer를 쓴다
+   2) DataOutputStream과 UTF 메소드를 쓴다.
+	
