@@ -23,4 +23,5 @@ ${cursor}
 
 여기서는 백틱을 인식하지 못해 작음따옴표를 써줘야 한다.
 
-	
+- 새로운 maven project를 시작할 때 filter에서 springmvc를 검색해 홍단 자바를 찾아서 쓰기
+- views는 없어도 되는 폴더, servlet-context에서 커스텀 가능	
