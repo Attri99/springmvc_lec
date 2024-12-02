@@ -39,7 +39,7 @@
     for(const btn of btnDo) {
       btn.addEventListener('click', (event) => {
         
-        // Node : Element, Text 등을 지짗ㅇ하는 상위 개념의 DOM 객체
+        // Node : Element, Text 등을 지칭하는 상위 개념의 DOM 객체
         // Element : 한 마디로 태그(HTMLElement)를 의미하는 Node의 하위 개념 DOM 객체이다.
         
         // 같은 레벨의 요소를 '형제(Sibling) 관계' 라고 한다.
@@ -69,7 +69,15 @@
     }
     
     
-    } 
+    } // end onload
+    
+    function fnMove(anchor) { // anchor는 클릭한 a 태그를 의미
+      
+      alert('이동합니다.');
+      location.href=anchor.dataset.url;
+          
+    }
+    
 </script>
 </head>
 <body>
@@ -95,8 +103,15 @@
   <div data-no="2">
     <button type="button" class="btns">요청하기2</button>
   </div>
-
-
+  <br/>
+  
+  <%-- <a> 태그를 클릭하면 JavaScript의 fnMove() 함수가 호출된다. --%>
+  <%-- this : 클릭한 요소를 의미한다. 어떤 <a> 태그를 클릭했는지 함쉥 인자로 전달한다. --%>
+  
+  <a onclick="fnMove(this)" data-url="https://www.naver.com">네이버</a><br/>
+  <a onclick="fnMove(this)" data-url="https://www.kakao.com">카카오</a><br/>
+  
+  
 
 </body>
 </html>

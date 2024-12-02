@@ -20,4 +20,7 @@ ${cursor}
 - 한글이 깨지지 않도록 
    1) OutputStream 과 Writer를 쓴다
    2) DataOutputStream과 UTF 메소드를 쓴다.
+
+여기서는 백틱을 인식하지 못해 작음따옴표를 써줘야 한다.
+
 	

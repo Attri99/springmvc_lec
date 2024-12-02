@@ -14,8 +14,8 @@ public class MvcController5 {
     }
   
     
-  @RequestMapping(value={"/webdir5/req1", "/webdir5/req2", "/webdir5/req3", "/webdir5/req4"})
-  public String req4(HttpServletRequest request) {
+  @RequestMapping(value={"/webdir5/req1", "/webdir5/req2", "/webdir5/req3", "/webdir5/req4","/webdir5/req5"})
+  public String req(HttpServletRequest request) {
     
     String param = request.getParameter("param");
     System.out.println(param);
