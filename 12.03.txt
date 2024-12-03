@@ -1,3 +1,6 @@
 db에 변화가 생길때 (Insert, update, delete,..) 등이 있을때 select 쪽으로 redirect가 항상 이루어져야 함
 CRUD(Create, redirect, update, delete)
 ${} : el(expression language)
+
+사용자가 사이트에 접속 > 서버가 세션을 줌 > 그것을 사용자는 브라우저의 쿠키에 저장함
+만료 기간에 세션이 적혀 있는건 세션 쿠키라고 함 > 세션이 사라지면 나도 사라지겠다.

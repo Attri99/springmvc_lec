@@ -9,6 +9,12 @@
 <title>Welcome</title>
 </head>
 <body>
-
+  
+  <%--로그인 화면 --%>
+  <form action="${contextPath}/user/login.do" method="POST">
+    <input type="text" name="id"><br/>
+    <input type ="password" name="pw"><br/>
+    <button type="submit">로그인</button>
+  </form>
 </body>
 </html>
