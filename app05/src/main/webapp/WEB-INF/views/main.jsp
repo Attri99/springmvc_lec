@@ -10,11 +10,38 @@
 </head>
 <body>
   
+  <%-- 세션에 저장된 userVo 인스턴스가 있으면 로그인이 성공한 화면을 보여주고, 없으면 로그인 폼을 보여준다. --%>    
+  
+  <%-- 세션에 저장된 userVo 확인하기 --%>
+  <%-- 세션에 저장된 속성(Attribute)은 sessionScope라는 표현 언어의 내장 객체를 함께 사용한다. --%>
+  <div>${sesionScope.userVo.id}</div>
+  
+  <c:if test="${not empty sessionScope.userVo}">;
+  <%-- 로그인이 성공한 화면 --%>
+  <%-- 세션에 저장된 사용자 정보를 보여주고, 로그아웃 버튼을 보여준다. --%>
+   <div>
+    ${sesionScope.userVo.id}님 환영합니다.
+    <button type="button">로그아웃</button>
+   </div>
+  </c:if>
+  
   <%--로그인 화면 --%>
+  
+  <c:if test="${empty sessionScope.userVo}">
   <form action="${contextPath}/user/login.do" method="POST">
     <input type="text" name="id"><br/>
     <input type ="password" name="pw"><br/>
     <button type="submit">로그인</button>
   </form>
+  </c:if>
+  
+  <script>
+  
+   const btnLogout = document.getElementById('btn-logout');
+   btnLogout.addEventListener('click', (event) => {
+     location.href = '${contextPath}/user/main';
+   })
+  </script>
+  
 </body>
 </html>
