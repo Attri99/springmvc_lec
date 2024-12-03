@@ -25,7 +25,7 @@ public class MvcController2 {
   public String insert(
       Person person   // 사용자가 입력한 정보가 커맨드 객체 Person person에 저장된다.
     , Model model                           // Model에 저장된 속성은 forward할 때만 전달된다. redirect 할 때는 전달되지 않는다.
-    , RedirectAttributes redirectAttributes // RedirectAttributes에 저장된 플래시 속성 
+    , RedirectAttributes redirectAttributes // RedirectAttributes에 저장된 플래시 속성(Flash Attribute)은 redirect할 때 전달된다.
    ) {
     
     // 사용자가 입력한 정보를 List에 저장한다.

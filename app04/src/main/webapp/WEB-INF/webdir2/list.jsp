@@ -11,19 +11,21 @@
   
   //Model에 저장된 속성(Attribute) msg1 확인해 본다. 확인된다면 전달이 된 것이고, 아니라면 안 된 것이다.
   const msg1 = '${msg1}';
-  alert ('msg1 : ' + msg1);
+  alert('msg1 : ' + msg1);
   
-  // 
-
+  // RedirectAttributes에 저장된 플래시 속성(Flash Attribute) msg2 확인하기
+  const msg2= '${msg2}';
+  alert('msg2 : ' + msg2);
+  
 </script>
 </head>
 <body>
   
-  <%-- 속성을 만드는 태그(Attribute) --%>
+  <%-- 속성(Attribute)을 만드는 태그입니다 --%>
   <%-- var 태그 속성 : 속성의 이름을 작성한다. value 태그 속성 : 속성의 값을 저장한다. --%>
   <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
   <div>
-    <a href="${contextPath}/redirect/main.do">이동하러 가기</a>
+    <a href="${contextPath}/redirect/main.do">작성하러 가기</a>
   </div>
   
   <%-- 속성 people 반복 태그로 출력하기 --%>

@@ -3,13 +3,12 @@ package com.min.app05.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.min.app05.vo.UserVo;
 
-@Controller
+//@Controller
 public class MvcController1 {
 
   @RequestMapping(value = "/")
@@ -64,7 +63,7 @@ public class MvcController1 {
       // 방법 1. 세션에 저장된 userVo 속성 제거하기
       session.removeAttribute("userVo");
     
-      // 방법 2. 세션을 초기화하기
+      // 방법 2. 세션을 초기화하기(이 방법을 추천)
       session.invalidate();
       
       // welcome 화면으로 이동한다.
