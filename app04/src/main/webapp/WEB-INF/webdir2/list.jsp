@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <meta name ="viewport" content="width=device-width, initial-scale=1.0">
 <title>Person list</title>
+<script>
+  
+  //Model에 저장된 속성(Attribute) msg1 확인해 본다. 확인된다면 전달이 된 것이고, 아니라면 안 된 것이다.
+  const msg1 = '${msg1}';
+  alert ('msg1 : ' + msg1);
+  
+  // 
+
+</script>
 </head>
 <body>
   
