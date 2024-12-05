@@ -5,7 +5,7 @@ views
     detail.jsp
     write.jsp
 ----------------------
-main.jsp로 이동    /
+main.jsp로 이동    / , /main.do
   MvcController.java
 list.jsp로 이동      /contact/list.do
 detail.jsp로 이동   /contact/detail.do
@@ -14,5 +14,15 @@ detail.jsp로 이동   /contact/detail.do
 write.jsp로 이동   /contact/write.do
   등록               /contact/register.do
   ContactController.java
+
+--------------------------
+
+                Controller <->Service <-> Dao
+                                  비즈니스     데이터베이스     
+로그인         /login.do      login()        Select
+                               
+
+               HttpServletRequest -> HttpServletRequest -> ContactDto
+		 		  .getParameter()
 
 경로에 대한 약속을 프로젝트 시작 전에 문서화 하는 것이 매우 중요함.
