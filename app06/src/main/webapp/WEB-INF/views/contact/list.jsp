@@ -32,16 +32,13 @@
       location.href = '${contextPath}/contact/write.do';      
     }  
       
-    const modifyMsg = '${modifyMsg}';
-    if(modifyMsg !== ''){
-      alert(modifyMsg);
+    const msg = '${msg}';
+    if(msg !== ''){
+      alert(msg);
     }
     
-    const removeMsg = '${removeMsg}';
-    if(removeMsg !== ''){
-      alert(removeMsg);
-    }
-  
+   
+
   </script>
 
 

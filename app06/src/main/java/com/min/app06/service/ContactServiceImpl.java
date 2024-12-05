@@ -39,8 +39,16 @@ public class ContactServiceImpl implements IContactService{
 
   @Override
   public String register(HttpServletRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+ // 요청 파라미터 4개를 이용해서 ContactDto로 만듭니다.
+    ContactDto contactDto = ContactDto.builder()
+                              .last_name(request.getParameter("last_name"))
+                              .first_name(request.getParameter("first_name"))
+                              .email(request.getParameter("email"))
+                              .mobile(request.getParameter("mobile"))
+                              .build();
+  
+    // ContactDto를 DAO로 전달한 뒤 등록 결과를 등록 성공/실패 메시지로 바꿔 반환합니다.
+    return contactDao.register(contactDto) == 1 ? "등록 성공" : "등록 실패";
   }
 
   @Override

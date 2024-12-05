@@ -53,7 +53,7 @@ public class ContactController { // service한테서 결과를 받아오고 jsp�
     // 요청을 그대로 서비스로 전달하고 수정 성공/실패 메시지를 받아온다.
     String modifyMsg = contactService.modify(request);
     // 수정 성공/실패 메시지를 RedirectAttributes에 저장합니다. Model에 저장하면 리다이렉트할 때 전달되지 않습니다.
-    redirectAttributes.addFlashAttribute("modifyMsg", modifyMsg);
+    redirectAttributes.addFlashAttribute("msg", modifyMsg);
     
     // 연락처 목록 보기로 리다이렉트 한다. 삽입/수정/삭제 이후에는 반드시 리다이렉트 합니다.
     return "redirect:/contact/list.do";
@@ -64,7 +64,7 @@ public class ContactController { // service한테서 결과를 받아오고 jsp�
     // 요청을 삭제 서비스에 전달하고, 삭제 성공/실패 메시지를 받아 옵니다.
     String removeMsg = contactService.remove(request);
     // 삭제 성공/실패 메시지를 RedirectAttributes에 저장합니다.
-    redirectAttributes.addFlashAttribute("removeMsg", removeMsg);
+    redirectAttributes.addFlashAttribute("msg", removeMsg);
     //연락처 목록 보기로 리다이렉트 합니다.
     return "redirect:/contact.list.do";
   }
@@ -74,7 +74,15 @@ public class ContactController { // service한테서 결과를 받아오고 jsp�
     
   }
   
+  @RequestMapping(value="/register.do", method=RequestMethod.POST)
+  public String Register(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    // 요청을 서비스에 전달한 뒤 등록 성공/실패 메시지를 받아와서 RedirectAttributes에 저장합니다.
+    redirectAttributes.addFlashAttribute("msg", contactService.register(request));
+    // 목록 보기로 redirect 합니다.
+    return "redirect:/contact/list.do";
+    
   
+  }
 
 
 }

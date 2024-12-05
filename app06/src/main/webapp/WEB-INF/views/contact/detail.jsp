@@ -27,7 +27,7 @@
     
     <div>
       <label for="first_name">FIRST NAME</label>
-      <input type="text" name ="fitst_name" id="first_name" value="${contact.first_name}">
+      <input type="text" name ="first_name" id="first_name" value="${contact.first_name}">
     </div>
     
     <div>
