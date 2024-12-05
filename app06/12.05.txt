@@ -1,0 +1,18 @@
+views
+  main.jsp (welcome)
+  contact
+    list.jsp
+    detail.jsp
+    write.jsp
+----------------------
+main.jsp로 이동    /
+  MvcController.java
+list.jsp로 이동      /contact/list.do
+detail.jsp로 이동   /contact/detail.do
+  수정               /contact/modify.do
+  삭제               /contact/remove.do
+write.jsp로 이동   /contact/write.do
+  등록               /contact/register.do
+  ContactController.java
+
+경로에 대한 약속을 프로젝트 시작 전에 문서화 하는 것이 매우 중요함.
