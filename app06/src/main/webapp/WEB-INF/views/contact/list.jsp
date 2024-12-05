@@ -7,9 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name ="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Contact List</title>
 </head>
 <body>
+
+  <h1>Contact List</h1>
+  
+  <%-- 리스트의 인덱스가 필요한 경우 varStatus 태그 속성을 만들고, index 값을 꺼낸다. --%>
+  <c:forEach var="contact" items="${contacts}" varStatus="vs">
+    <div id="contact${vs.index}" class="contact">
+      ${contact.contact_id} : ${contact.last_name}
+    </div>
+  </c:forEach>
+
+
+
+
+
 
 </body>
 </html>

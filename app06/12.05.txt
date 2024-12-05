@@ -24,5 +24,12 @@ write.jsp로 이동   /contact/write.do
 
                HttpServletRequest -> HttpServletRequest -> ContactDto
 		 		  .getParameter()
+-----------------------------
+list.jsp
+Contact List
+총 3명 --- ContactDaoImpl's getContactCount() 호출 결과 표시하기
+1 : aaaa
+2 : ssss
+3 : dddd
 
 경로에 대한 약속을 프로젝트 시작 전에 문서화 하는 것이 매우 중요함.

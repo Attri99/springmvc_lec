@@ -28,7 +28,8 @@ public class ContactServiceImpl implements IContactService{
 
   @Override
   public ContactDto getContact(int contact_id) {
-    // TODO Auto-generated method stub
+    
+    List<ContactDto> contactId = contactDao.getContactCount();
     return null;
   }
 
