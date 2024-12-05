@@ -14,12 +14,35 @@
   <h1>Contact List</h1>
   
   <div>전체 연락처 : ${count}개</div>  
+  
+  <div>
+    <button type="button" onclick="fnWriteForm()">등록</button>
+  </div>
   <%-- 리스트의 인덱스가 필요한 경우 varStatus 태그 속성을 만들고, index 값을 꺼낸다. --%>
+  
   <c:forEach var="contact" items="${contacts}" varStatus="vs">
     <div id="contact${vs.index}" class="contact">
       <a href="${contextPath}/contact/detail.do?contact_id=${contact.contact_id}">${contact.contact_id} : ${contact.last_name}</a>
     </div>
   </c:forEach>
+  
+  <script>
+  
+    function fnWriteForm(){
+      location.href = '${contextPath}/contact/write.do';      
+    }  
+      
+    const modifyMsg = '${modifyMsg}';
+    if(modifyMsg !== ''){
+      alert(modifyMsg);
+    }
+    
+    const removeMsg = '${removeMsg}';
+    if(removeMsg !== ''){
+      alert(removeMsg);
+    }
+  
+  </script>
 
 
 

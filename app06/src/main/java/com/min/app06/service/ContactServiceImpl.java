@@ -1,5 +1,6 @@
 package com.min.app06.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class ContactServiceImpl implements IContactService{
   @Override
   public Map<String, Object> getAllContact() {
     // Dao로부터 연락처 목록을 가져온다.
-    Map<String, Object> contacts = contactDao.getContactList();
+    List<ContactDto> contacts = contactDao.getContactList();
     // 전체 연락처 개수를 가져온다.
     int count = contactDao.getContactCount();
     // 연락처 목록과 전체 연락처 개수를 반환한다.
@@ -44,15 +45,32 @@ public class ContactServiceImpl implements IContactService{
 
   @Override
   public String modify(HttpServletRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+    // 요청 파라미터 5개를 이용해서 ContactDto로 만듭니다.
+    ContactDto contactDto = ContactDto.builder()
+                              .contact_id(Integer.parseInt(request.getParameter("contact_id")))
+                              .last_name(request.getParameter("last_name"))
+                              .first_name(request.getParameter("first_name"))
+                              .email(request.getParameter("email"))
+                              .mobile(request.getParameter("mobile"))
+                              .build();
+    // ContactDto를 Dao로 전달하고 수정 성공/실패 메시지를 만듭니다.
+    String modifyMsg = contactDao.modify(contactDto) == 1 ? "수정 성공" : "수정 실패";
+    // 수정 성공/실패 메시지를 반환합니다.
+    return modifyMsg;
   }
 
   @Override
   public String remove(HttpServletRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+    // 요청 파라미터 contact_id를 꺼냅니다. contact_id는 <form> 태그에 포함되어 있기 때문에 반드시(null 체크는 필요 없다는 뜻입니다.)
+    // 대신 contact_id에 입력된 값이 없는 상태로 전다로디면 빈 문자열 ("")이 전달됩니다.(공백 체크가 필요하다는 뜻)
+    
+    String str_contact_id = request.getParameter("contact_id");
+    int contact_id = 0;  // 초기 상태는 삭제가 실패할 값을 저장해 둡니다.
+    if(!str_contact_id.isEmpty()) {
+      contact_id = Integer.parseInt(str_contact_id);
   }
+  // contact_id를 전달해서 삭제한 뒤, 삭제 성공/실패 메시지를 반환합니다.
+  return contactDao.remove(contact_id) == 1 ? "삭제 성공" : "삭제 실패";
   
-  
+}
 }

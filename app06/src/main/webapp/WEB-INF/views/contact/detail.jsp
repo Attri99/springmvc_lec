@@ -13,11 +13,11 @@
 
   <h1>${contact.last_name} 연락처</h1>
 
-  <form>
+  <form id="form-detail" method="post">
   
     <div>
       <label for="contact_id">CONTACT ID</label>
-      <input type="text" name ="contact_id" id="contact_id" value="${contact.last_name}" readonly>
+      <input type="text" name ="contact_id" id="contact_id" value="${contact.contact_id}" readonly>
     </div>
     
     <div>
@@ -40,9 +40,43 @@
       <input type="text" name ="mobile" id= "mobile" value="${contact.mobile}">
     </div>
   
+    <div>
+      <button type="button" id="btn-modify">수정 완료</button>
+      <button type="button" id="btn-remove">연락처 삭제</button>
+      <button type="reset">수정 취소</button>
+      <button type="button" id="btn-confirm">확인 완료</button>
+    </div>
+    
   </form>
 
-
+  <script>
+  
+  // 폼
+  const formDetail = document.getElementById('form-detail');
+  
+  // 수정 완료 버튼을 클릭하면 수정하기 요청을 합니다.
+   document.getElementById('btn-modify').addEventListener('click', (event) =>{
+    formDetail.action = '${contextPath}/contact/modify.do';
+    formDetail.submit();
+   })
+  
+    
+  // 연락처 삭제 버튼을 클릭하면 삭제하기 요청을 합니다.
+  document.getElementById('btn-remove').addEventListener('click', (event) =>{
+    if(confirm('해당 연락처를 삭제할까요?')){
+    formDetail.action = '${contextPath}/contact/remove.do';
+    formDetail.submit();
+    }
+   })
+  // 하나의 폼에서 두 개의 서브밋을 자바스크립트에서는 가능하다.
+  
+  // 확인 완료 버튼을 누르면 연락처 목록으로 이동합니다.
+  document.getElementById('btn-confirm').addEventListener('click', (event) =>{
+    location.href = '${contextPath}/contact/list.do';
+   })
+  
+  
+  </script>
 
 
 

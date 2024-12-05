@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,7 +41,7 @@ public class ContactDaoImpl implements IContactDao {
   private ResultSet rs;
   
   @Override
-  public Map<String, Object> getContactList() {
+  public List<ContactDto> getContactList() {
     // SELECT 결과 목록을 저장할 List입니다.
     List<ContactDto> contacts = new ArrayList<ContactDto>();
     // 데이터베이스에 접속합니다.
@@ -82,7 +81,7 @@ public class ContactDaoImpl implements IContactDao {
     // 사용한 자원을 반납합니다.
     jdbcConnection.close(conn, ps, rs);
     // SELECT 결과 목록을 반환합니다.
-    return (Map<String, Object>) contacts;
+    return contacts;
   }
 
   @Override
