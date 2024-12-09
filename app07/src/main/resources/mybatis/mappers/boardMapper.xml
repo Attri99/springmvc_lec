@@ -35,7 +35,98 @@
        
  -->
 
+<!--
+
+ Parameter 처리 방식
+ 
+ 1. #{parameter}
+  1) SQL 구문으로 전달된 파라미터를 PreparedStatement의 Place Holder(? 마크) 방식으로 처리한다
+  2) 작성 방법
+    1) 파라미터가 여러개인 경우
+      #{param1}, #{param2}, #{param3}, ...
+    2) 파라미터가 일반 변수인 경우
+      #{변수명}
+    3) 파라미터가 Map인 경우
+      #{key}
+    4) 파라미터가 DTO인 경우 
+      #{field} 
+ 2. ${parameter}
+   1) 문자열 대체 방식이다. (String Substitution)
+   2) 전달된 파라미터가 따옴표 또는 이스케이프 처리 없이 그대로 SQL 구문에 포함됩니다.
+   3) SQL 구문의 메타 데이터(테이블 이름, 칼럼 이름, 쿼리문 자체 키워드 등)를 처리할 때 사용합니다. 
+-->
+
+
 
 <mapper namespace="mybatis.mappers.boardMapper">
+  
+  <select id="selectBoardList" resultType="com.min.app07.dto.BoardDto">
+   SELECT
+          board_id
+        , title
+        , contents
+        , create_dt
+        , usr_id
+    FROM
+          tbl_board
+   ORDER BY
+          board_id DESC 
+  </select>
+  
+  <select id="selectBoardCount" resultType="int">
+    SELECT
+           COUNT(*)
+      FROM
+           tbl_board
+  </select>
+
+  <select id="selectBoardById" parameterType="int" resultType="com.min.app07.dto.BoardDto">
+    SELECT
+          board_id
+        , title
+        , contents
+        , create_dt
+        , usr_id
+    FROM
+          tbl_board
+   WHERE
+          board_id = #{boardId}       
+  </select>
+  <insert id="insertBoard" parameterType="com.min.app07.dto.BoardDto">
+    INSERT INTO
+      tbl_board
+    VALUES (
+        NULL
+      , #{title}
+      , #{contents}
+      , NOW()
+      , #{usrId}    
+    )
+  </insert>
+  
+  <update id="updateBoard" parameterType="com.min.app07.dto.BoardDto">
+    UPDATE
+          tbl_board
+  
+       SET
+           title= #{title}
+         , contents = #{contents}
+     WHERE
+           board_id = #{boardId}     
+  </update>
+  
+  <delete id="deleteBoard" parameterType="com.min.app07.dto.BoardDto">
+  DELETE
+    FROM
+          tbl_board
+   WHERE 
+          board_id = #{boardId}       
+  
+  
+  </delete>
+
+
+
+
 
 </mapper>

@@ -17,7 +17,7 @@
     
   
   <!-- 2. com.zaxxer.hikari.HikariDataSource -->
-  <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariConfig">
+  <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
     <constructor-arg ref="hikariConfig"/>  
   </bean>
   

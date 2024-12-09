@@ -9,10 +9,15 @@ MyBatis 동작
  mybatis-config.xom참조
  DB 접속 정보
  매퍼 결로 정보
+ 
+ 2. SqlSessionFactory (SqlSessionFactoryBean)
+  mapper.xml(패키지 단위로 여러 개 존재(테이블 당 존재))
+      SQL 문
+        - 인자, 반환 설정
 
-3. SqpSession(SqlSessionTemplate)
+ 3. SqpSession(SqlSessionTemplate)
    매퍼의 SQL문을 실행하는 Java 객체
- - insert(), update(), delete(), selectList(), selectOne()
+    - insert(), update(), delete(), selectList(), selectOne()
 Spring 디펜던시
 MyBatis
 MyBatis Spring

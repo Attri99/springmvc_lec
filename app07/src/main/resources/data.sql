@@ -29,9 +29,9 @@ INSERT INTO tbl_user VALUES (NULL, 'james@gmail.com', 'james');
 INSERT INTO tbl_user VALUES (NULL, 'helena@gmail.com', 'helena');
 INSERT INTO tbl_user VALUES (NULL, 'harry@gmail.com', 'harry');
 
-INSERT INTO tbl_board VALUES (NULL, '20241209 식단', '김치찌개, 순두부찌개, 된장찌개', '2024-12-05 10:00:00', 1);
-INSERT INTO tbl_board VALUES (NULL, '20241210 식단', '방어, 광어, 우럭 매운탕', '2024-12-06 10:00:00', 1);
-INSERT INTO tbl_board VALUES (NULL, '20241211 식단', '파스타, 리조또, 피자', '2024-12-04 10:00:00', 2);
+INSERT INTO tbl_board VALUES (NULL, '20241209_식단', '김치찌개, 된장찌개, 순두부찌개', '2024-12-05 10:00:00', 1);
+INSERT INTO tbl_board VALUES (NULL, '20241210_식단', '대방어, 광어, 우럭 매운탕', '2024-12-06 10:00:00', 1);
+INSERT INTO tbl_board VALUES (NULL, '20241211_식단', '파스타, 리조토, 피자', '2024-12-07 10:00:00', 2);
 
 
 

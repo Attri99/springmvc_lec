@@ -10,7 +10,7 @@ import com.min.app07.dto.BoardDto;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Repository
+@Repository  // DAO에서 사용하는 @Component 입니다. Spring Container에 IBoardDao 타입의 bean이 생성됩니다.
 public class BoardDaoImpl implements IBoardDao {
 
   private final SqlSessionTemplate template;
@@ -23,40 +23,49 @@ public class BoardDaoImpl implements IBoardDao {
   }
   */
   
+  /*
+   * 매퍼의 SQL 구문 호출하는 방식
+   * 
+   * selectList(SQL's id[, Parameter])
+   *  selectOne(SQL's id[, Parameter])
+   *     insert(SQL's id[, Parameter])
+   *     update(SQL's id[, Parameter])
+   *     delete(SQL's id[, Parameter]) 
+   */
   @Override
   public List<BoardDto> selectBoardList() {
-    // TODO Auto-generated method stub
-    return null;
+    List<BoardDto> boardList = template.selectList("mybatis.mappers.boardMapper.selectBoardList");
+    return boardList;
   }
 
   @Override
   public int selectBoardCount() {
-    // TODO Auto-generated method stub
-    return 0;
+    int boardCount = template.selectOne("mybatis.mappers.boardMapper.selectBoardCount");
+    return boardCount;
   }
 
   @Override
   public BoardDto selectBoardById(int boardId) {
-    // TODO Auto-generated method stub
-    return null;
+    BoardDto boardDto = template.selectOne("mybatis.mappers.boardMapper.selectBoardById", boardId);
+    return boardDto;
   }
 
   @Override
   public int insertBoard(BoardDto boardDto) {
-    // TODO Auto-generated method stub
-    return 0;
+    int result = template.insert("mybatis.mappers.boardMapper.insertBoard", boardDto);
+    return result;
   }
 
   @Override
   public int updateBoard(BoardDto boardDto) {
-    // TODO Auto-generated method stub
-    return 0;
+    int result = template.update("mybatis.mappers.boardMapper.updateBoard", boardDto);
+    return result;
   }
 
   @Override
   public int deleteBoard(BoardDto boardDto) {
-    // TODO Auto-generated method stub
-    return 0;
+   int result = template.delete("mybatis.mappers.boardMapper.deleteBoard", boardDto);
+    return result;
   }
 
 }
