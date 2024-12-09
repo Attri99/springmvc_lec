@@ -18,6 +18,7 @@ MyBatis 동작
  3. SqpSession(SqlSessionTemplate)
    매퍼의 SQL문을 실행하는 Java 객체
     - insert(), update(), delete(), selectList(), selectOne()
+
 Spring 디펜던시
 MyBatis
 MyBatis Spring
@@ -26,3 +27,16 @@ hikaricp : Connection Pool 라이브러리(Connection을 미리 만들어 주는
     - Java Connection Pool API : javax.sql.Datasource
     - Hikari Connection Pool API : com.zaxxer.hikari.HikariDataSource
 mybatis.org
+
+오늘 수업 순서
+
+1) MyBatis, MyBatis Spring, Spring JDBC, hikaricp 의 디펜던시를 pom.xml에 추가
+2) workbench에서 필요 쿼리문을 작성하고 resource 폴더에 data.sql 형태로 저장
+3) resource 폴더에 mybatis, mappers 패키지를 만들고 그 안에 xml 문서 작성(DTD config 3.0)
+4) 각 table에 해당하는 BoardDto, UserDto 작성
+5) BoardDao 인터페이스 작성하고 boardMapper로 메소드 정리
+6) 이를 이용해 BoardDaoImpl 도 작성
+7) DaoTest class를 통해 단위테스트 실행
+
+
+

@@ -9,10 +9,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
 
 public class UserDto {
   

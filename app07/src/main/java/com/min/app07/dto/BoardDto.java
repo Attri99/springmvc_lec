@@ -12,10 +12,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
 public class BoardDto {
   
   private int boardId;
