@@ -105,7 +105,7 @@
   <!-- resultType 대신 resultMap을 이용해서 반환합니다. -->
   
   <resultMap type ="BoardDto" id="BoardMap">
-    <id column="" property= "boardId"/>
+    <id column="board_id" property= "boardId"/>
     <result column="title" property="title"/>
     <result column="contents" property="contents"/>
     <result column="create_dt" property="createDt"/>    
@@ -114,11 +114,10 @@
       <result column="usr_email" property="usrEmail"/>
       <result column="usr_name"  property="usrName"/>
     </association>
-    
   </resultMap>
   
   
-  <select id="selectBoardList" resultMap="BoardMap">
+  <select id="selectBoardList" parameterType="String" resultMap="BoardMap">
    SELECT
           board_id
         , title
@@ -197,6 +196,7 @@
         Date(create_dt) >= #{beginDt} AND DATE(create_dt) <![CDATA[<=]]> #{endDt}           
    
   </select>
+  
   <select id="selectBoardIntegratedSearch" parameterType="Map" resultMap="BoardMap">
    SELECT
           board_id
@@ -236,7 +236,7 @@
       , #{title}
       , #{contents}
       , NOW()
-      , #{usrId}    
+      , #{userDto.usrId}   
     )
     <!-- 
       SELECT LAST_INSERT_ID() : 마지막으로 삽입된 PK값을 의미합니다. (해당 커넥션에서만 동작하므로, 다수의 사용자가 동시에 다른 커넥션으로 삽입을 요청해서 해당 커넥션에서 삽입한 PK값임을 보장합니다.)
@@ -266,7 +266,7 @@
            board_id = #{boardId}     
   </update>
   
-  <delete id="deleteBoard" parameterType="BoardDto">
+  <delete id="deleteBoard" parameterType="int">
   DELETE
     FROM
           tbl_board
