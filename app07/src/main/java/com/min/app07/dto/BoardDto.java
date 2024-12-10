@@ -22,5 +22,8 @@ public class BoardDto {
   private String title;
   private String contents;
   private Timestamp createDt;
-  private int usrId;
+  // private int usrId;
+  private UserDto userDto;
+
+
 }

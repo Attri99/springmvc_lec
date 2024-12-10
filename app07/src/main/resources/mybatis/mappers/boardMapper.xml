@@ -56,19 +56,48 @@
    3) SQL 구문의 메타 데이터(테이블 이름, 칼럼 이름, 쿼리문 자체 키워드 등)를 처리할 때 사용합니다. 
 -->
 
+<!-- 
+  CDATA
+  1. Character DATA(문자 데이터)를 의미합니다.
+  2. 마크업 언어(xml)에서 마크업으로 해석하지 않고 문자를 그대로 포함하고자 할 때 CDATA를 사용합니다.
+  3. 형식
+    <![CDATA[ 문자데이터]]>
+ -->
 
 
 <mapper namespace="mybatis.mappers.boardMapper">
   
-  <select id="selectBoardList" resultType="com.min.app07.dto.BoardDto">
+  <!-- BoardDto 의 구조를 이용해 BoardMap을 만듭니다. -->
+  <!-- BoardDto를 반환하지 않고, BoardMap을 반환합니다. -->
+  <!-- resultType 대신 resultMap을 이용해서 반환합니다. -->
+  
+  <resultMap type ="BoardDto" id="BoardMap">
+    <id column="" property= "boardId"/>
+    <result column="title" property="title"/>
+    <result column="contents" property="contents"/>
+    <result column="create_dt" property="createDt"/>    
+    <association javaType="UserDto" property="userDto">
+      <id column="usr_id" property="usrId"/>
+      <result column="usr_email" property="usrEmail"/>
+      <result column="usr_name"  property="usrName"/>
+    </association>
+    
+  </resultMap>
+  
+  
+  <select id="selectBoardList" resultMap="BoardMap">
    SELECT
           board_id
         , title
         , contents
         , create_dt
-        , usr_id
+        , b.usr_id
+        , usr_email
+        , usr_name
     FROM
-          tbl_board
+          tbl_board b INNER JOIN tbl_user u
+      ON
+          b.usr_id = u.usr_id    
    ORDER BY
           board_id DESC 
   </select>
@@ -80,19 +109,62 @@
            tbl_board
   </select>
 
-  <select id="selectBoardById" parameterType="int" resultType="com.min.app07.dto.BoardDto">
+  <select id="selectBoardById" parameterType="int" resultMap="BoardMap">
     SELECT
           board_id
         , title
         , contents
         , create_dt
-        , usr_id
+        , b.usr_id
+        , usr_email
+        , usr_name
     FROM
-          tbl_board
+          tbl_board b INNER JOIN tbl_user u
+      ON 
+          b.usr_id = u.usr_id       
+   
    WHERE
           board_id = #{boardId}       
   </select>
-  <insert id="insertBoard" parameterType="com.min.app07.dto.BoardDto">
+  
+  <select id="selectBoardSearchList" parameterType="Map" resultMap="BoardMap">
+  SELECT
+          board_id
+        , title
+        , contents
+        , create_dt
+        , b.usr_id
+        , usr_email
+        , usr_name
+    FROM
+          tbl_board b INNER JOIN tbl_user u
+      ON 
+          b.usr_id = u.usr_id       
+   
+   WHERE
+          ${column} LIKE CONCAT('%', #{query}, '%')
+   ODRER BY usr_id DESC
+       
+  </select>
+  
+  <select id="selectBoardPeriodList" parameterType="Map" resultMap="BoardMap">
+  SELECT
+          board_id
+        , title
+        , contents
+        , create_dt
+        , b.usr_id
+        , usr_email
+        , usr_name
+    FROM
+          tbl_board b INNER JOIN tbl_user u
+      ON
+          b.usr_id = u.usr_id
+   WHERE
+        Date(create_dt) >= #{beginDt} AND DATE(create_dt) <![CDATA[<=]]> #{endDt}           
+   
+  </select>
+  <insert id="insertBoard" parameterType="BoardDto">
     INSERT INTO
       tbl_board
     VALUES (
@@ -104,7 +176,7 @@
     )
   </insert>
   
-  <update id="updateBoard" parameterType="com.min.app07.dto.BoardDto">
+  <update id="updateBoard" parameterType="BoardDto">
     UPDATE
           tbl_board
   
@@ -115,7 +187,7 @@
            board_id = #{boardId}     
   </update>
   
-  <delete id="deleteBoard" parameterType="com.min.app07.dto.BoardDto">
+  <delete id="deleteBoard" parameterType="BoardDto">
   DELETE
     FROM
           tbl_board
@@ -125,7 +197,7 @@
   
   </delete>
 
-
+  
 
 
 

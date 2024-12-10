@@ -33,6 +33,11 @@ INSERT INTO tbl_board VALUES (NULL, '20241209_식단', '김치찌개, 된장찌�
 INSERT INTO tbl_board VALUES (NULL, '20241210_식단', '대방어, 광어, 우럭 매운탕', '2024-12-06 10:00:00', 1);
 INSERT INTO tbl_board VALUES (NULL, '20241211_식단', '파스타, 리조토, 피자', '2024-12-07 10:00:00', 2);
 
+COMMIT;
 
+SELECT board_id, title, contents, b.usr_id, usr_email, usr_name, create_dt
+  FROM tbl_board b INNER JOIN tbl_user u
+    ON b.usr_id = u.usr_id
+ ORDER BY board_id DESC;
 
 
