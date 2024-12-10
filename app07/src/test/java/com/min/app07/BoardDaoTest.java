@@ -64,4 +64,18 @@ class BoardDaoTest {
     assertEquals(2, boardDao.selectBoardPeriodList(map).size());
   
   }
+  
+  @Test
+  void 통합검색() {
+    
+    String title = "";
+    String usrEmail="@";
+    String usrName="";
+    String beginDt="";
+    String endDt="";
+    Map<String, Object> map = Map.of("title", title, "usrEmail", usrEmail, "usrName", usrName, "beginDt", beginDt, "endDt", endDt);
+    
+    assertEquals(3, boardDao.selectBoardIntegratedSearch(map).size());
+    
+  }
 }

@@ -53,16 +53,21 @@ public class BoardDaoImpl implements IBoardDao {
   
   @Override
   public List<BoardDto> selectBoardSearchList(Map<String, Object> map) {
-    List<BoardDto> searchList = template.selectList("mybatis.mappers.boardMapper.selectBoardSearchList");
+    List<BoardDto> searchList = template.selectList("mybatis.mappers.boardMapper.selectBoardSearchList", map);
         return searchList;
   }
   
   @Override
   public List<BoardDto> selectBoardPeriodList(Map<String, Object> map) {
-    List<BoardDto> periodList = template.selectList("mybatis.mappers.boardMapper.selectBoardPeriodList");
+    List<BoardDto> periodList = template.selectList("mybatis.mappers.boardMapper.selectBoardPeriodList", map);
     return periodList;
   }
   
+  @Override
+  public List<BoardDto> selectBoardIntegratedSearch(Map<String, Object> map) {
+    List<BoardDto> list = template.selectList("mybatis.mappers.boardMapper.selectBoardIntegratedSearch", map);
+    return list;
+  }
   @Override
   public int insertBoard(BoardDto boardDto) {
     int result = template.insert("mybatis.mappers.boardMapper.insertBoard", boardDto);
