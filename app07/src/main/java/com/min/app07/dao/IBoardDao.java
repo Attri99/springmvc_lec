@@ -15,5 +15,7 @@ public interface IBoardDao {
   List<BoardDto> selectBoardIntegratedSearch(Map<String, Object> map);
   int insertBoard(BoardDto boardDto);
   int updateBoard(BoardDto boardDto);
-  int deleteBoard(BoardDto boardDto);
+  int deleteBoard(int boardId);
+  int deleteSelectedBoard(int[] numbers);
+  
 }

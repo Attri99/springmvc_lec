@@ -64,6 +64,39 @@
     <![CDATA[ 문자데이터]]>
  -->
 
+<!-- 
+  동적 쿼리
+  1. if
+    1) 형식
+      <if test="파라미터조건식"></if>
+    2) 예시
+      <if test="title != null"></if>  
+      <if test="title != ''"></if>  
+      <if test="userDto.usrId != 0"></if>
+   2. foreach
+     1) 형식
+       <foreach collection="array|list|key|field" item="요소" open="시작구문" close="종료구문" separator="구분자" index="인덱스" nullable="true|false">
+        #{요소}
+       </foreach> 
+     2) 예시
+      (1) 파라미터가 배열인 경우
+       <foreach collection="array" item="element" open="ID IN (" close=")" separator=",">
+       #{element}
+       </foreach>
+      (2) 파라미터가 List인 경우
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+         #{item}
+        </foreach>
+        ** 결과 : (item1, item2, item3 ,...)
+      (3) 파라미터가 배열 또는 리스트를 가진 Map인 경우
+        List<String> flowers = Arrays.asList("모란", "백합", "국화");
+        Map<String, Object> map = map.of("flowers", flowers);
+         <foreach collection="flowers" item="flower" open="(" close=")" separator=",">
+          #{flower}
+         </foreach}
+        ** 결과 : ('모란', '백합', '국화') 
+          
+ -->
 
 <mapper namespace="mybatis.mappers.boardMapper">
   
@@ -205,15 +238,30 @@
       , NOW()
       , #{usrId}    
     )
+    <!-- 
+      SELECT LAST_INSERT_ID() : 마지막으로 삽입된 PK값을 의미합니다. (해당 커넥션에서만 동작하므로, 다수의 사용자가 동시에 다른 커넥션으로 삽입을 요청해서 해당 커넥션에서 삽입한 PK값임을 보장합니다.)
+      resultType="int"        : SELECT 문의 실행 결과는 int 입니다.
+      order="AFTER"           : INSERT 문이 실행된 이후에 <selectKey> 태그가 동작합니다.
+      keyProperty="boardId"   : 마지막으로 삽입된 PK값을 boardID에 저장합니다. boardId는 삽입
+     -->
+    
+    <selectKey keyProperty="boardId" order="AFTER" resultType="int">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
   
   <update id="updateBoard" parameterType="BoardDto">
     UPDATE
           tbl_board
-  
-       SET
-           title= #{title}
-         , contents = #{contents}
+       <!-- <set> 태그는 콤마(,)로 시작하면 이를 지웁니다. -->
+       <set>
+       <if test="title != null">
+         title= #{title}
+       </if>
+       <if test="contents != null">
+       , contents = #{contents}
+       </if>    
+       </set>
      WHERE
            board_id = #{boardId}     
   </update>
@@ -227,7 +275,16 @@
   
   
   </delete>
-
+  <delete id="deleteSelectedBoard">
+   DELETE
+     FROM
+          tbl_board
+    WHERE
+          board_id IN
+    <foreach collection="array" item="number" open="(" close=")" separator=",">
+      #{number}
+    </foreach>
+   </delete>
   
 
 

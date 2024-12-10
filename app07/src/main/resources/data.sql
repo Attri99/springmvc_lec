@@ -40,4 +40,4 @@ SELECT board_id, title, contents, b.usr_id, usr_email, usr_name, create_dt
     ON b.usr_id = u.usr_id
  ORDER BY board_id DESC;
 
-
+SELECT LAST_INSERT_ID();
