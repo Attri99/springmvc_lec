@@ -280,13 +280,10 @@
      FROM
           tbl_board
     WHERE
-          board_id IN
+          board_id IN 
     <foreach collection="array" item="number" open="(" close=")" separator=",">
       #{number}
     </foreach>
    </delete>
   
-
-
-
 </mapper>

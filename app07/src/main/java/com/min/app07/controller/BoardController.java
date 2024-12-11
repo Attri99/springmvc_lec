@@ -55,12 +55,36 @@ public class BoardController {
     // 모델에 저장한 것과 동일한 상황입니다.
     
     return "redirect:/board/detail.do?boardId={id}"; // 상세보기로 리다이렉트 (상세보기 요청을 작성합니다.)
-    
-  
-  
-  
+     
   }                                                  // {id}는 attribute로 저장된 id를 의미합니다. 
 
+  @RequestMapping(value="/remove.do", method=RequestMethod.POST)
+  public String remove(int boardId, RedirectAttributes redirectAttributes) {
+    
+    // 삭제 서비스로부터 삭제 결과를 받아온 뒤, 해당 정보를 리다이렉트 할 수 있도록 redirectAttributes에 저장합니다.
+    redirectAttributes.addFlashAttribute("msg", boardService.removeBoard(boardId));
+    
+    return "redirect:/board/list.do";
+  }
+  
+  @RequestMapping(value="/removes.do", method=RequestMethod.POST)
+  public String removes(String[] numbers, RedirectAttributes redirectAttributes) {
+    
+    // 선택 삭제 서비스로부터 삭제 결과를 받아온 뒤, 해당 정보를 리다이렉트 할 수 있도록 redirectAttributes에 저장합니다.
+    redirectAttributes.addFlashAttribute("msg", boardService.removeBoardList(numbers));
+    return "redirect:/board/list.do";
+  }
+  
+  @RequestMapping(value="/write.do")
+  public String write() {
+    return "board/write";
+  }
 
-
+  @RequestMapping(value="/register.do", method=RequestMethod.POST)
+  public String register(BoardDto boardDto, RedirectAttributes redirectAttributes) {
+    
+    redirectAttributes.addFlashAttribute("msg", boardService.registerBoard(boardDto));
+    return "redirect:/board/list.do";
+  }
 }
+

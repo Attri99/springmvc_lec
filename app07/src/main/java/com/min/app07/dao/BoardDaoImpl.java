@@ -87,7 +87,7 @@ public class BoardDaoImpl implements IBoardDao {
   }
 
   @Override
-  public int deleteSelectedBoard(int[] numbers) {
+  public int deleteSelectedBoard(String[] numbers) {
     int result = template.delete("mybatis.mappers.boardMapper.deleteSelectedBoard", numbers);
     return result;
   }

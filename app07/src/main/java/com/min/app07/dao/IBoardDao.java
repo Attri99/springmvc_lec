@@ -16,6 +16,6 @@ public interface IBoardDao {
   int insertBoard(BoardDto boardDto);
   int updateBoard(BoardDto boardDto);
   int deleteBoard(int boardId);
-  int deleteSelectedBoard(int[] numbers);
+  int deleteSelectedBoard(String[] numbers);
   
 }
