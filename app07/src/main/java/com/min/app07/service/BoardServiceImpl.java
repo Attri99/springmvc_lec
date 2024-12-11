@@ -43,4 +43,11 @@ public class BoardServiceImpl implements IBoardService{
     // 상세 정보를 받아와서 컨트롤러로 반환합니다.
     return boardDao.selectBoardById(boardId);
   }
+  
+  @Override
+  public String modifyBoard(BoardDto boardDto) {
+    
+    // 수정한 뒤 수정 결과를 텍스트로 반환합니다.
+    return boardDao.updateBoard(boardDto) == 1 ? "수정 성공" : "수정 실패";
+  }
 }

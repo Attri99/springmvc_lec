@@ -18,12 +18,11 @@
 <body>
 
   <div class="form-wrap">
-    <h1>게시글 작성하기</h1>
-    <form action="${contextPath}/board/register.do" method="post">
-      <div class="usr-wrap">
-        <label for="usr_email">작성자</label>
-        <input type="hidden" name="boardId" placeholder="이메일">
-      </div>
+    <h1>Board Detail</h1>
+    <form id="form-detail" method="post">
+      <input type="hidden" name="boardId" value="${b.boardId}">
+      <div>작성자명 : ${b.userDto.usrName}</div>
+      <div>작성일시 : ${b.createDt}</div>
       <div class="title-wrap">
         <label for="title">제목</label>
         <input type="text" id="title" name="title" value="${b.title}">
@@ -46,7 +45,7 @@
     // 함수 표현식 : 호이스팅이 안 됩니다.
     // const fnModify = () => {
       
-    }
+    
     // 함수 선언식 : 호이스팅이 됩니다. 코드가 어디에 있든지 항상 먼저 처리됩니다.
     function fnModify(){
       formDetail.action = "${contextPath}/board/modify.do";
@@ -56,6 +55,11 @@
     
     function fnCancel() {
       location.href = '${contextPath}/board/list.do';
+    }
+    
+    const msg = '${msg}';
+    if(msg !== '') {
+      alert(msg);
     }
   </script>
 

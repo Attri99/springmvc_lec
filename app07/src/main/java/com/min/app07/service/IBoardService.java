@@ -10,6 +10,7 @@ public interface IBoardService {
 
   Map<String, Object> getBoardList(HttpServletRequest request);
   BoardDto getBoardById(int boardId);
+  String modifyBoard(BoardDto boardDto);
   
   
 }

@@ -22,7 +22,7 @@
   <div class="list-wrap">
     <h1>Board List</h1>
     <div>
-      <a href="${contextPath}/board/list.do?sort=DESC"> 최신순</a> | <a href="${contextPath}/board/list.do?sort=ASDC"> 과거순</a>
+      <a href="${contextPath}/board/list.do?sort=DESC"> 최신순</a> | <a href="${contextPath}/board/list.do?sort=ASC"> 과거순</a>
     </div>
     
     <table>
@@ -38,7 +38,7 @@
         <c:forEach items="${boardList}" var="b">
           <tr>
             <td><input type="checkbox"></td>
-            <td><a href="${contextpath}/board/detail.do?boardId=${b.boardId}">${b.title}</a></td>
+            <td><a href="${contextPath}/board/detail.do?boardId=${b.boardId}">${b.title}</a></td>
             <td>${b.userDto.usrName}</td>
             <td><fmt:formatDate value="${b.createDt}"
                 pattern="yyyy-MM-dd" /></td>
