@@ -14,5 +14,5 @@ public interface IBoardService {
   String removeBoard(int boardId);
   String removeBoardList(String[] numbers);
   String registerBoard(BoardDto boardDto);
-  
+  Map<String, Object> getSearchList(HttpServletRequest request);
 }

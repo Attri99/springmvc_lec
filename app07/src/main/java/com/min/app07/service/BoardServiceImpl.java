@@ -71,4 +71,22 @@ public class BoardServiceImpl implements IBoardService{
     
     return boardDao.insertBoard(boardDto) == 1 ? "등록 완료" : "등록 실패";
   }
+  
+  @Override
+  public Map<String, Object> getSearchList(HttpServletRequest request) {
+    // 요청 파라미터를 Map으로 만듭니다.
+    Map<String, Object> param = Map.of("title", request.getParameter("title")
+                                      ,"usrEmail", request.getParameter("usrEmail")
+                                      ,"usrName", request.getParameter("usrName")
+                                      ,"beginDt", request.getParameter("beginDt")
+                                      ,"endDt", request.getParameter("endDt"));
+    // 검색 결과 목록을 가져옵니다.
+    List<BoardDto> boardList = boardDao.selectBoardIntegratedSearch(param);
+    
+    // 검색 결과 개수를 가져옵니다.
+    int boardCount = boardDao.selectBoardIntegratedSearchCount(param);
+    
+    // 검색 결과
+    return Map.of("boardList", boardList, "boardCount", boardCount);
+  }
 }

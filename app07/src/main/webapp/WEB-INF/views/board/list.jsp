@@ -22,6 +22,15 @@
    <div class="list-wrap">
     <h1>Board List</h1>
     <div>
+      <form action="${contextPath}/board/search.do">
+        <input type="text" name="title" placeholder="제목 검색"><br/>
+        <input type="text" name="usrEmail" placeholder="작성자 이메일 검색"><br/>
+        <input type="text" name="usrName" placeholder="작성자 이름 검색"><br/>
+        <input type="date" name="beginDt"> - <input type="date" name="endDt"><br/>
+        <button type="submit">검색</button>
+      </form>
+    </div>
+    <div>
       <a href="${contextPath}/board/list.do?sort=DESC"> 최신순</a> | <a
         href="${contextPath}/board/list.do?sort=ASC"> 과거순</a>
     </div>

@@ -86,5 +86,20 @@ public class BoardController {
     redirectAttributes.addFlashAttribute("msg", boardService.registerBoard(boardDto));
     return "redirect:/board/list.do";
   }
+  
+  @RequestMapping(value="/search.do")
+  public String search(HttpServletRequest request, Model model) {
+    
+    // 검색 서비스로부터 검색 결과 목록과 검색 결과 개수를 받아옵니다.
+    Map<String, Object> map = boardService.getSearchList(request);
+    
+    // 검색 결과 목록과 검색 겨로가 개수를 JSP로 전달할 수 있도록 model에 저장합니다.
+    
+    model.addAttribute("boardList", map.get("boardList"));
+    model.addAttribute("boardCount", map.get("boardCount"));
+    
+    
+    return "board/list";
+  }
 }
 
