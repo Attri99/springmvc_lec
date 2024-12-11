@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.min.app07.service.IBoardService;
 
@@ -32,4 +33,11 @@ public class BoardController {
     return "board/list";
   }
   
+  @RequestMapping(value="/detail.do")
+  public String detail(@RequestParam(name="boardId", required=false, defaultValue = "0") int boardId, Model model) {
+   
+    // 상세 서비스로부터 상세 정보를 받아온 뒤 해당 정보를 JSP로 전달할 수 있도록 model에 저장합니다.
+    model.addAttribute("");
+    return "board/detail";
+  }
 }

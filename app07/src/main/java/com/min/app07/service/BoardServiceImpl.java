@@ -36,4 +36,11 @@ public class BoardServiceImpl implements IBoardService{
     return Map.of("boardList", boardList, "boardCount", boardCount);
   }
   
+  @Override
+  public BoardDto getBoardById(int boardId) {
+    
+    
+    // 상세 정보를 받아와서 컨트롤러로 반환합니다.
+    return boardDao.selectBoardById(boardId);
+  }
 }

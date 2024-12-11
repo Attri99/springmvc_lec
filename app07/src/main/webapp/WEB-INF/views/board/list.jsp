@@ -21,6 +21,10 @@
 
   <div class="list-wrap">
     <h1>Board List</h1>
+    <div>
+      <a href="${contextPath}/board/list.do?sort=DESC"> 최신순</a> | <a href="${contextPath}/board/list.do?sort=ASDC"> 과거순</a>
+    </div>
+    
     <table>
       <thead>
         <tr>
@@ -34,7 +38,7 @@
         <c:forEach items="${boardList}" var="b">
           <tr>
             <td><input type="checkbox"></td>
-            <td>${b.title}</td>
+            <td><a href="${contextpath}/board/detail.do?boardId=${b.boardId}">${b.title}</a></td>
             <td>${b.userDto.usrName}</td>
             <td><fmt:formatDate value="${b.createDt}"
                 pattern="yyyy-MM-dd" /></td>
@@ -43,7 +47,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="4">전체 ${boardCount} 개 게시글</td>
+          <td colspan="4">전체 ${boardCount}개 게시글</td>
         </tr>
       </tfoot>
     </table>
