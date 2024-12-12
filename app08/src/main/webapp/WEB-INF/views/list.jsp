@@ -12,7 +12,7 @@
 </head>
 <body>
   
- <img src="${contextPath}/resources/images/logo_coupang.png}" width="200px">
+ <img src="${contextPath}/resources/images/logo_coupang.png" width="200px">
   
  <div class="form-wrap">
   <!-- 파일 첨부를 위한 form 태그는 method 속성과 enctype 속성이 정해져 있습니다. -->
