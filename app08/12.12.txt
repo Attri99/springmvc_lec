@@ -1,0 +1,9 @@
+새 프로젝트 만들면 일이 진행되는 순서
+
+maven project 생성 -> pom.xml, web.xml 수정 후 update project -> workbench에서 query문 작성
+-> project의 resources에 저장 -> dto 생성 -> dto의 field 들을 가지고 하고 싶은 작업들을 IFileDao의 method로 정리한다.
+-> 이를 기반으로 FileDaoImpl도 제작
+
+
+공부할 때 보면 좋을거 같은 잘 정리된 블로그
+https://u-it.tistory.com/
