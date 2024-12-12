@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name ="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="${contextPath}/resources/css/list.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/list.css?dt=<%=System.currentTimeMillis()%>">
 <title>File Upload</title>
 </head>
 <body>
   
-  <img src="${contextPath}/resources/logo_coupang.png}" width="200px">
+ <img src="${contextPath}/resources/images/logo_coupang.png}" width="200px">
   
  <div class="form-wrap">
   <!-- 파일 첨부를 위한 form 태그는 method 속성과 enctype 속성이 정해져 있습니다. -->
@@ -38,7 +38,7 @@
   if(msg != '')
     alert(msg);
   
-  document.getElementById('file').addEventListener('change', (event) =>{
+  document.getElementById('file').addEventListener('change', (event) => {
    const limit = 1024 * 1024 * 10;
    const size = event.currentTarget.files[0].size;
    if(size > limit) {
