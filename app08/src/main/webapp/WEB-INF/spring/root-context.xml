@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- Root Context: defines shared resources visible to all other web components -->
+
+  <!-- HikariCP : HikariConfig + HikariDataSource -->
+  
+  <!-- 1. com.zaxxer.hikari.HikariConfig -->
+  <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+   <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+   <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/db_app08?serverTimezone=Asia/Seoul"/>
+   <property name="username" value="greenit"/>
+   <property name="password" value="greenit"/>
+  </bean>
+    
+  
+  <!-- 2. com.zaxxer.hikari.HikariDataSource -->
+  <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
+    <constructor-arg ref="hikariConfig"/>  
+  </bean>
+  
+  <!-- SQLSessionFactoryBean -->
+  
+  <!-- 3. org.mybatis.spring.SqlSessionFactoryBean -->
+  <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name ="dataSource" ref="hikariDataSource"/>
+    <property name="configLocation" value="classpath:mybatis/configuration/mybatis-config.xml"/>
+    <property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"/>
+  </bean>
+  
+  <!-- SQLSessionTamplate -->
+  <!-- 4. org.mybatis.spring.SqlSessionTemplate -->
+  <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <constructor-arg ref="sqlSessionFactoryBean"/>  
+  </bean>
+
+  <!-- ConnonsMultipartResolver " 파일 업로드를 위해서 스프링이 호출해서 사용하는 Bean. bean.multipart -->
+  <bean id = "multipartResolver" class ="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="defaultEncoding" value="UTF-8"/>
+    <property name="maxUploadSizePerFile" value="10485760"/>
+    <property name="maxUploadSize" value="10485760"/>
+  </bean>  
+ 
+</beans>
