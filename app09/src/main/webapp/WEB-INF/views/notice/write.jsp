@@ -59,7 +59,7 @@
    
    
  }
-
+ attachCheck();
 </script>
 
 </body>

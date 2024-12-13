@@ -24,7 +24,9 @@
   <insert id="insertNotice" parameterType="NoticeDto">
     INSERT INTO tbl_notice
     VALUES INTO (null, #{noticeTitle}, #{noticeContents}, NOW())
-  
+    <selectKey keyProperty="noticeId" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
   <insert id="insertAttach" parameterType="AttachDto">
     INSERT INTO tbl_attach

@@ -17,6 +17,36 @@
 
 <a href="${contextPath}/notice/write.do"}>새 공지사항 작성하기</a>
 </div>
+<div>
+  <c:forEach items="${noticeList}" var="n">
+    <div class="notices" data-notice-id="${n.noticeId}">
+      공지번호 ${n.noticeId} | ${n.noticeTitle} ... <fmt:formatDate value="${n.createdAt}" pattern="yyyy.MM.dd HH:mm:ss"/>
+    </div>
+  </c:forEach>
+</div>
 
+<script>
+
+  function detailHandle() {
+  
+    const notice = document.getElementsByClassName('notices');
+    for(const n of notices) {
+    notice.addEventListener('click', (event) => {
+      
+    location.href = '${contextPath}/notice/detail.do?noticeId=' + event.currentTarget.dataset.noticeId;
+    })
+    
+  }
+}
+
+function msgHandle() {
+  const msg = '${msg}';
+  if(msg !== '')
+    alert(msg);
+}
+
+detailHandle();
+msgHandle();
+</script>
 </body>
 </html>
