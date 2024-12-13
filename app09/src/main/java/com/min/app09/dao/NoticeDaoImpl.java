@@ -34,6 +34,12 @@ public class NoticeDaoImpl implements INoticeDao {
   }
 
   @Override
+  public AttachDto selectAttachById(int attachId) {
+    
+    return template.selectOne("mybatis.mappers.noticeMapper.selectAttachById", attachId);
+  }
+  
+  @Override
   public int insertNotice(NoticeDto noticeDto) {
     
     return template.insert("mybatis.mappers.noticeMapper.insertNotice", noticeDto);

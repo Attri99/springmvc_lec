@@ -21,16 +21,26 @@
    
   </select>
   
+  <select id="selectAttachById" parameterType="int" resultType="AttachDto">
+    SELECT attach_id, notice_id, file_path, original_filename, filesystem_name
+      FROM tbl_attach
+     WHERE attach_id = ${attachId}
+   
+  </select>
+  
+  
+  
   <insert id="insertNotice" parameterType="NoticeDto">
     INSERT INTO tbl_notice
-    VALUES INTO (null, #{noticeTitle}, #{noticeContents}, NOW())
+    VALUES (null, #{noticeTitle}, #{noticeContents}, NOW())
     <selectKey keyProperty="noticeId" resultType="int" order="AFTER">
       SELECT LAST_INSERT_ID()
     </selectKey>
   </insert>
+  
   <insert id="insertAttach" parameterType="AttachDto">
     INSERT INTO tbl_attach
-    VALUES INTO (null, #{noticeId}, #{filePath}, #{originalFilename}, #{filesystemName})
+    VALUES (null, #{noticeId}, #{filePath}, #{originalFilename}, #{filesystemName})
   </insert>
   
   <delete id="deleteNotice" parameterType="int">

@@ -14,7 +14,7 @@
 <h1>Notice Write</h1>
 
 <div>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="${contextPath}/notice/regist.do" method="post" enctype="multipart/form-data">
   <input type="text" name="noticeTitle" placeholder="제목"><br/>
   <textarea rows="5" cols="30" name="noticeContents" placeholder="내용"></textarea><br/>
   <input type="file" name="files" id="files" multiple><br/>
@@ -34,6 +34,9 @@
    
    // 전체 파일 크기 제한
    const limitTotalSize = 1024 * 1024 *100;
+   
+   // 전체 파일 크기를 저장할 변수
+   let totalSize = 0;
    
    // 첨부 이벤트
    files.addEventListener('change', (event) => {

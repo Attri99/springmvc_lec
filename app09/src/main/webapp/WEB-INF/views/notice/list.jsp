@@ -15,8 +15,9 @@
 
 <div>
 
-<a href="${contextPath}/notice/write.do"}>새 공지사항 작성하기</a>
+<a href="${contextPath}/notice/write.do">새 공지사항 작성하기</a>
 </div>
+
 <div>
   <c:forEach items="${noticeList}" var="n">
     <div class="notices" data-notice-id="${n.noticeId}">
@@ -29,8 +30,8 @@
 
   function detailHandle() {
   
-    const notice = document.getElementsByClassName('notices');
-    for(const n of notices) {
+    const notices = document.getElementsByClassName('notices');
+    for(const notice of notices) {
     notice.addEventListener('click', (event) => {
       
     location.href = '${contextPath}/notice/detail.do?noticeId=' + event.currentTarget.dataset.noticeId;

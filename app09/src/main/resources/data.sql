@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS tbl_attach
 		attach_id 				 INT AUTO_INCREMENT,
     notice_id 				 INT,
     file_path 				 VARCHAR(300),
-    original_filename  VARCHAR(40),
+    original_filename  VARCHAR(300),
+		filesystem_name    VARCHAR(40),
     CONSTRAINT pk_attach PRIMARY KEY (attach_id),
     CONSTRAINT fk_notice_attach FOREIGN KEY (notice_id)
 				REFERENCES tbl_notice (notice_id) ON DELETE CASCADE
