@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS tbl_notice
   notice_title     VARCHAR(1000) NOT NULL,
   notice_contents	 VARCHAR(1000),
   created_at			 DATETIME,
+  download_count	 INT,
   CONSTRAINT pk_notice PRIMARY KEY (notice_id)
 ) ENGINE = InnoDB COMMENT= '공지사항';
 
@@ -22,6 +23,7 @@ CREATE TABLE IF NOT EXISTS tbl_attach
     file_path 				 VARCHAR(300),
     original_filename  VARCHAR(300),
 		filesystem_name    VARCHAR(40),
+    download_count 		 INT,
     CONSTRAINT pk_attach PRIMARY KEY (attach_id),
     CONSTRAINT fk_notice_attach FOREIGN KEY (notice_id)
 				REFERENCES tbl_notice (notice_id) ON DELETE CASCADE

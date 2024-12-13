@@ -156,6 +156,8 @@ public class NoticeServiceImpl implements INoticeService {
       e.printStackTrace();
     }
     
+    // 다운로드 횟수 증가하기
+    noticeDao.updateAttachDownloadCount(attachId);
     // 다운로드를 진행하는 ResponseEntity 반환
     
     return new ResponseEntity<Resource>(resource, responseHeader, HttpStatus.OK);

@@ -56,5 +56,9 @@ public class NoticeDaoImpl implements INoticeDao {
     // TODO Auto-generated method stub
     return template.delete("mybatis.mappers.noticeMapper.deleteNotice", noticeId);
   }
-
+  
+  @Override
+  public int updateAttachDownloadCount(int attachId) {
+    return template.update("mybatis.mappers.noticeMapper.updateAttachDownloadCount", attachId);
+  }
 }
