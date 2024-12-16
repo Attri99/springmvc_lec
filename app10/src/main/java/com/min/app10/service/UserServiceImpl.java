@@ -45,8 +45,18 @@ public class UserServiceImpl implements IUserService {
    // 목록 가져오기
    List<UserDto> users = userDao.selectUserList(Map.of("offset", pageUtil.getOffset(), "display", pageUtil.getDisplay(),
                                                        "sort", sort));
+   
+   // 페이지 이동 링크 가져오기
+   String paging = pageUtil.getPaging(request.getContextPath() + "/user/list.do");
+   
    // 결과 반환하기
-   return Map.of("users", users);
+   return Map.of("users", users
+               , "total", total
+               , "paging", paging
+               , "offset", pageUtil.getOffset());
+   
+   
+   
     
   }
 }

@@ -22,6 +22,9 @@ public class UserController {
   public String list(HttpServletRequest request, Model model) {
     Map<String, Object> map = userService.getUserList(request);
     model.addAttribute("users", map.get("users"));
+    model.addAttribute("total", map.get("total"));
+    model.addAttribute("paging", map.get("paging"));
+    model.addAttribute("offset", map.get("offset"));
     return "user/list";
   }
   

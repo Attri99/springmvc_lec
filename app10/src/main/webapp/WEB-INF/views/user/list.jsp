@@ -71,8 +71,9 @@
           </tr>
         </c:if>
         <c:if test="${not empty users}">
-          <c:forEach items="${users}" var="user">
+          <c:forEach items="${users}" var="user" varStatus="k">
             <tr>
+            <td>${offset + k.count}</td>
             <td>${user.id}</td>
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
@@ -85,7 +86,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="7">페이지 표시</td>
+          <td colspan="7">${paging}</td>
         </tr>
       </tfoot>
     </table>

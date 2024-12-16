@@ -49,9 +49,10 @@ public class PageUtil {
      
      // <style></style>
      builder.append("<style>");
-     builder.append(".paging{text-align: center; }");
-     builder.append(".paging button {border: none; background-color: #fff; text-align: center; width: 40px; height: 20px; line-height: 20px; }");
+     builder.append(".paging{display : flex; justify-content: space-between; width: 520px; margin: 0 auto; }");
+     builder.append(".paging button {display : block; border: none; background-color: #fff; text-align: center; width: 40px; height: 20px; line-height: 20px; }");
      builder.append(".paging .disabled-button { color: silver; }");
+     builder.append(".paging.focus-page { color: limegreen; }");
      builder.append("</style>");
      
      // <div class="paging">
@@ -60,13 +61,23 @@ public class PageUtil {
      // 이전 블록
      // 1. 링크 없음 : <button type="button" class="disabled-button">&lt;</button>
      
-     // 2. 링크 있음 : <button type="button" onclick="location.href='/app10/user/list.do?page=11'">
+     // 2. 링크 있음 : <button type="button" onclick="location.href='/app10/user/list.do?page=10'">&lt;</button>
      if(beginPage == 1)
        builder.append("<button type=\"button\" style=\"color: silver;\">&lt;</button>");
      else
-       builder.append("<button type=\"button\" onclick=\"location.href='"+ requestURI + "?page=" +(beginPage -1));
+       builder.append("<button type=\"button\" onclick=\"location.href='"+ requestURI + "?page=" +(beginPage - 1) + "'\">&lt;</button>");
      
      // 1 2 3 4 5 6 7 8 9 10
+     // <button type="button" onclick="location.href='/app10/user/list.do?page=1'">1</button>
+     // <button type="button" onclick="location.href='/app10/user/list.do?page=2'">2</button>
+     // <button type="button" onclick="location.href='/app10/user/list.do?page=3'">3</button>
+     for(int p = beginPage; p <= endPage; p++) {
+       if(p == page) {
+         builder.append("<button type=\"button\" onclick=\"location.href='" + requestURI + "?page=" + p + "'\" class=\"focus-page\">" + p + "</button>");
+       } else {
+         builder.append("<button type=\"button\" onclick=\"location.href='" + requestURI + "?page=" + p +"'\">" + p +"</button>");
+       }
+     }
      
      // 다음 블록 >
      // 1. 링크 없음 : <button type="button" class="disabled-button">&gt;</button>
@@ -80,7 +91,7 @@ public class PageUtil {
      builder.append("</div>");
      
    
-   return null;
+   return builder.toString();
    }
    
 }
