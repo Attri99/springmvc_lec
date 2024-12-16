@@ -42,7 +42,10 @@
 </style>
 </head>
 <body>
-  
+  <div>
+    <button type="button" class="recent">최신순</button>
+    <button type="button" class="number">번호순</button>
+  </div>
   <div class="wrap">
     <h1>회원 목록</h1>
     <table>
@@ -66,12 +69,14 @@
         </c:if>
         <c:if test="${not empty users}">
           <c:forEach items="${users}" var="user">
+            <tr>
             <td>${user.id}</td>
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.email}</td>
             <td>${user.gender}</td>
             <td>${user.ipAddress}</td>
+           </tr>
           </c:forEach>
         </c:if>
       </tbody>
@@ -82,6 +87,9 @@
       </tfoot>
     </table>
   </div>
+  <script>
+   
   
+  </script>
 </body>
 </html>
