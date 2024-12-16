@@ -32,8 +32,11 @@ public class UserServiceImpl implements IUserService {
    Optional<String> optDisplay = Optional.ofNullable(request.getParameter("display"));
    int display = Integer.parseInt(optDisplay.orElse("20"));
    
-   // off set 계산하기
-   pageUtil.setPaging(page, display);
+   // DB에서 전체 목록의 개수 가져오기
+   int total = userDao.selectUserCount();
+   
+   // 페이징 처리에 필요한 모든 정보 처리하기
+   pageUtil.setPaging(page, display, total);
    
    // sort 파라미터 (디폴트 DESC)
    Optional<String> optSort = Optional.ofNullable(request.getParameter("sort"));

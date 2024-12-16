@@ -42,12 +42,15 @@
 </style>
 </head>
 <body>
-  <div>
-    <button type="button" class="recent">최신순</button>
-    <button type="button" class="number">번호순</button>
-  </div>
+  
+    
+  
   <div class="wrap">
     <h1>회원 목록</h1>
+    <div style="text-align: right;">
+      <a href="${contextPath}/user/list.do?page=1&sort=DESC">최신순</a>|
+      <a href="${contextPath}/user/list.do?page=1&sort=ASC">과거순</a>
+    </div>
     <table>
       <caption>총 ${total}명</caption>
       <thead>
