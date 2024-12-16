@@ -10,7 +10,7 @@
 <title>User List</title>
 <style>
   .wrap{
-    width: 700px;
+    width: 1060px;
     margin: 0 auto;
     
   }
@@ -29,13 +29,13 @@
    .wrap td{
     border: 1px solid silver;
    }
-   .wrap td:nth-of-type(1) {width: 80px;}
-   .wrap td:nth-of-type(2) {width: 80px;}
-   .wrap td:nth-of-type(3) {width: 100px;}
-   .wrap td:nth-of-type(4) {width: 100px;}
-   .wrap td:nth-of-type(5) {width: 140px;}
+   .wrap td:nth-of-type(1) {width: 100px;}
+   .wrap td:nth-of-type(2) {width: 100px;}
+   .wrap td:nth-of-type(3) {width: 150px;}
+   .wrap td:nth-of-type(4) {width: 150px;}
+   .wrap td:nth-of-type(5) {width: 300px;}
    .wrap td:nth-of-type(6) {width: 100px;}
-   .wrap td:nth-of-type(7) {width: 100px;}
+   .wrap td:nth-of-type(7) {width: 160px;}
    
    
 

@@ -43,16 +43,16 @@ public class PageUtil {
     * @return 문자열 형식의 페이지 이동 링크
     */
    
-   public String getPaging(String requestURI) {
+   public String getPaging(String requestURI, String sort) {
      
      StringBuilder builder = new StringBuilder();
      
      // <style></style>
      builder.append("<style>");
-     builder.append(".paging{display : flex; justify-content: space-between; width: 520px; margin: 0 auto; }");
-     builder.append(".paging button {display : block; border: none; background-color: #fff; text-align: center; width: 40px; height: 20px; line-height: 20px; }");
-     builder.append(".paging .disabled-button { color: silver; }");
-     builder.append(".paging.focus-page { color: limegreen; }");
+     builder.append(".paging{display : flex; justify-content: space-between; width: 400px; margin: 0 auto; }");
+     builder.append(".paging button {display : block; border: none; background-color: #fff; text-align: center; width: 30px; height: 20px; line-height: 20px; }");
+     builder.append(".paging .disabled-button { color: silver; cursor: auto; }");
+     builder.append(".paging .focus-page { color: limegreen; }");
      builder.append("</style>");
      
      // <div class="paging">
@@ -63,9 +63,9 @@ public class PageUtil {
      
      // 2. 링크 있음 : <button type="button" onclick="location.href='/app10/user/list.do?page=10'">&lt;</button>
      if(beginPage == 1)
-       builder.append("<button type=\"button\" style=\"color: silver;\">&lt;</button>");
+       builder.append("<button type=\"button\" class=\"disabled-button\">&lt;</button>");
      else
-       builder.append("<button type=\"button\" onclick=\"location.href='"+ requestURI + "?page=" +(beginPage - 1) + "'\">&lt;</button>");
+       builder.append("<button type=\"button\" onclick=\"location.href='"+ requestURI + "?page=" +(beginPage - 1) + "&sort=" + sort + "'\">&lt;</button>");
      
      // 1 2 3 4 5 6 7 8 9 10
      // <button type="button" onclick="location.href='/app10/user/list.do?page=1'">1</button>
@@ -73,9 +73,9 @@ public class PageUtil {
      // <button type="button" onclick="location.href='/app10/user/list.do?page=3'">3</button>
      for(int p = beginPage; p <= endPage; p++) {
        if(p == page) {
-         builder.append("<button type=\"button\" onclick=\"location.href='" + requestURI + "?page=" + p + "'\" class=\"focus-page\">" + p + "</button>");
+         builder.append("<button type=\"button\" onclick=\"location.href='" + requestURI + "?page=" + p + "&sort=" + sort +"'\" class=\"focus-page\">" + p + "</button>");
        } else {
-         builder.append("<button type=\"button\" onclick=\"location.href='" + requestURI + "?page=" + p +"'\">" + p +"</button>");
+         builder.append("<button type=\"button\" onclick=\"location.href='" + requestURI + "?page=" + p + "&sort=" + sort + "'\">" + p +"</button>");
        }
      }
      
@@ -85,7 +85,7 @@ public class PageUtil {
      if(endPage == totalPage)
        builder.append("<button type=\"button\" class=\"disabled-button\">&gt;</button>");
      else
-       builder.append("<button type=\"button\" onclick=\"location.href='"+ requestURI +"?page=" + (endPage + 1) + "'\">&gt;</button>");
+       builder.append("<button type=\"button\" onclick=\"location.href='"+ requestURI +"?page=" + (endPage + 1) + "&sort=" + sort +"'\">&gt;</button>");
      
      // <div>
      builder.append("</div>");

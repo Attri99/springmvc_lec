@@ -47,13 +47,13 @@ public class UserServiceImpl implements IUserService {
                                                        "sort", sort));
    
    // 페이지 이동 링크 가져오기
-   String paging = pageUtil.getPaging(request.getContextPath() + "/user/list.do");
+   String paging = pageUtil.getPaging(request.getContextPath() + "/user/list.do", sort);
    
    // 결과 반환하기
    return Map.of("users", users
                , "total", total
                , "paging", paging
-               , "offset", pageUtil.getOffset());
+               , "sort", pageUtil.getOffset()); // offset으로 순번 생성
    
    
    
