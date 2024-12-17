@@ -1,0 +1,28 @@
+20241217 비밀번호
+
+AOP
+1. Aspect Oriented Programming
+2. 관점 지향 프로그래밍
+3. 특정 시점(관점)에 반복적으로 동작시킬 작업을 등록할 때 사용한다.
+4. 비즈니스 메소드마다 반복해서 처리해야 하는 부분(로깅 처리, 트랜잭션 처리 등)을 여러 번 작성하지 않고, 하나의 코드만으로 반복해서 적용하는 프로그래밍 방식을 의미합니다.
+5. 개념 이해
+
+       ->(횡단)
+        @Controller   @Service  @Repository   DB
+
+/write.do
+/regist.do
+/modify.do
+/remove.do
+/list.do
+/detail.do
+
+6. AOP 핵심 용어
+ 1) JoinPoint : 조인 포인트, AOP를 적용할 메소드 전체를 의미합니다. 
+ 2) PointCut : 포인트컷, JoinPoint 중에서 AOP를 적용한 메소드를 의미합니다.    
+
+7. Advice 동작 시점
+ 1) @Before : Pointcut 동작 이전
+ 2) @After : PointCut 동작 이후 (동작 후 예외 발생 여부와 상관 없이 동작)
+ 3) @Around : PointCut 동작 이전과 이후 모두 동작
+ 4)      
